@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -26,50 +27,95 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(width: 100, height: 100, color: Colors.white),
-                  Container(width: 100, height: 100, color: Colors.white),
-                ],
-              ),
-            ),
-            Center(
-              child: Container(
-                width: 200,
-                height: 150,
-                color: Colors.black,
-                alignment: Alignment.center,
-                child: const Text(
-                  "Desafio Aula 15",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
+        backgroundColor: Colors.red,
+        body: SafeArea(
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              
+              children: [
+                
+                const CircleAvatar(
+                  radius: 80,
+                  foregroundImage: NetworkImage('https://picsum.photos/200'),
                 ),
-              ),
+                const Text(
+                  'Marvio Rocha',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Pacifico',
+                      fontSize: 30,
+                      color: Colors.white),
+                ),
+                const Text(
+                  'FLUTTER DEVELOPER',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.white),
+                ),
+                 
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                  ),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 150),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Icons.phone,
+                        size: 25.0,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('11 99999-9999',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                    ],
+                  ),
+                ),
+              
+              Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                  ),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 150),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Icons.email_outlined,
+                        size: 25.0,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('exemple@marviorocha.com',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18)),
+                    ],
+                  ),
+                ),
+            
+              ],
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(width: 100, height: 100, color: Colors.white),
-                  Container(width: 100, height: 100, color: Colors.white),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
