@@ -1,5 +1,7 @@
+import 'package:desafio_aula15/pages/clear_button.dart';
 import 'package:flutter/material.dart';
 
+ 
 void main() {
   runApp(const MyApp());
 }
@@ -10,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Calculadora',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
@@ -20,87 +23,265 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        backgroundColor: Colors.red,
-        body: SafeArea(
-          child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+          centerTitle: false,
+          backgroundColor: Colors.black87,
+          title: const Text('Calculator',
+              style: TextStyle(color: Colors.white, fontSize: 25)),
+          actions: const [
+            Icon(Icons.more_vert, color: Colors.white),
+          ]),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topRight,
+              height: 200,
+              padding: const EdgeInsets.all(10.0),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text('45+3',
+                      style: TextStyle(fontSize: 20.5, color: Colors.white38)),
+                  Text('12,545',
+                      style: TextStyle(
+                          fontSize: 50,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+
               children: [
-                CircleAvatar(
-                  radius: 80,
-                  foregroundImage: NetworkImage('https://picsum.photos/200'),
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ClearButton(
+                      clearButtonText: 'C',
+                      clearButtonColor: Colors.red.withOpacity(0.4),
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
                 ),
-                Text(
-                  'Marvio Rocha',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Pacifico',
-                      fontSize: 30,
-                      color: Colors.white),
-                ),
-                Text(
-                  'FLUTTER DEVELOPER',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white),
-                ),
-                SizedBox(
-                  height: 20,
-                  width: 400,
-                  child: Divider(
-                    color: Colors.white,
-                  ),
-                ),
-                Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 150),
-                  child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: ListTile(
-                        title: Text(
-                          '(11) 99999-9999',
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                        leading: Icon(
-                          Icons.phone,
-                          size: 25.0,
-                          color: Colors.red,
-                        ),
-                      )),
-                ),
-                Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 150),
-                  child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: ListTile(
-                        title: Text(
-                          'marviorocha@marviorocha.com',
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                        leading: Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.red,
-                        ),
-                      )),
-                ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: ClearButton(
+                      clearButtonText: 'del',
+                      clearButtonColor: Colors.black.withOpacity(0.4),
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                 ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '%',
+                      clearButtonColor: Colors.black45.withOpacity(0.8),
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '/',
+                      clearButtonColor: Colors.orange,
+                      clearButtonTextColor: Colors.black,
+                      ),
+                    ),
+                    
+                
               ],
             ),
-          ),
-        ));
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ClearButton(
+                      clearButtonText: '7',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: ClearButton(
+                      clearButtonText: '8',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                 ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '9',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '*',
+                       clearButtonColor: Colors.orange,
+                      clearButtonTextColor: Colors.black,
+                      ),
+                    ),
+                    
+                 
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ClearButton(
+                      clearButtonText: '4',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: ClearButton(
+                      clearButtonText: '5',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                 ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '6',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '+',
+                      clearButtonColor: Colors.orange,
+                      clearButtonTextColor: Colors.black,
+                      ),
+                    ),
+                    
+                 
+              ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ClearButton(
+                      clearButtonText: '1',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: ClearButton(
+                      clearButtonText: '2',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                 ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '3',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '-',
+                      clearButtonColor: Colors.orange,
+                      clearButtonTextColor: Colors.black,
+                      ),
+                    ),
+                    
+                 
+              ],
+            ),
+
+                  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ClearButton(
+                      clearButtonText: '0',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: SizedBox(
+                     width: 65,
+                   ),
+                 ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '.',
+                      clearButtonColor: Colors.black,
+                      clearButtonTextColor: Colors.white.withOpacity(0.7),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClearButton(
+                      clearButtonText: '=',
+                      clearButtonColor: Colors.orange,
+                      clearButtonTextColor: Colors.black,
+                      ),
+                    ),
+                    
+                 
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
